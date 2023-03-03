@@ -1,12 +1,14 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
+
+
+class LoginSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=150)
+    password = serializers.CharField(max_length=128)
 
 
 class RegisterSerializer(serializers.ModelSerializer):
